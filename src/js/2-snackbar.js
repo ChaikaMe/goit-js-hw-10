@@ -8,15 +8,17 @@ const delay = document.querySelector('input[name="delay"]');
 function promiseFunction(event) {
     event.preventDefault()
     const copyOfDelay = delay.value;
-    setTimeout(() => {
+    
         const promise = new Promise((resolve, reject) => {
+            setTimeout(() => {
             const radioStatus = document.querySelector('input[value="fulfilled"]');
             if (radioStatus.checked) {
                 resolve(copyOfDelay)
             }
             else {
                 reject(copyOfDelay)
-            }
+                }
+                }, copyOfDelay);
         });
     
         promise
@@ -31,7 +33,8 @@ function promiseFunction(event) {
                     icon: '',
                     message: `❌ Rejected promise in ${timer} ms`,
                 });
+                
             })
-    }, copyOfDelay);
+    
     delay.value = '';
 }
